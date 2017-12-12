@@ -22,7 +22,6 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Note noteText={} userName={} userCity={} />
       {
         this.state.notes.map((note) => {
           return (
