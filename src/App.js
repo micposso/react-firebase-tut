@@ -9,8 +9,8 @@ class App extends Component {
     //set react state of component
     this.state = {
       notes: [
-        {noteContent: "This is note 1", id: 1},
-        {noteContent: "This is note 2", id: 2}
+        {noteContent: "This is note 1", id: 1, textColor: "color: #fff;"},
+        {noteContent: "This is note 2", id: 2, textColor: "color: #fff;"}
       ],
     }
   }
@@ -25,7 +25,7 @@ class App extends Component {
       {
         this.state.notes.map((note) => {
           return (
-            <Note noteContent={note.noteContent} NoteId={note.id} key={note.id} />            
+            <Note noteContent={note.noteContent} NoteId={note.id} key={note.id} textColor={note.textColor} />            
           )
         })
       }
