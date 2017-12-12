@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-/* import Note from './Note/Note' */
+import Note from './Note/Note';
 import './App.css';
 
 class App extends Component {
@@ -17,8 +17,12 @@ class App extends Component {
 
 
   render() {
+    var user = {
+
+    }
     return (
       <div className="App">
+        <Note noteText={} userName={} userCity={} />
       {
         this.state.notes.map((note) => {
           return (
