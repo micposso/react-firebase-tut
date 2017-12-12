@@ -1,2 +1,2 @@
 # react-firebase-tut
-This is a tutorial for the lation web developers meetup
+This is a tutorial for the lationo web developers meetup
