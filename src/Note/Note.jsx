@@ -13,7 +13,7 @@ class Note extends Component {
 
     render(props){
         return (
-            /* add the HTML from the static folder into this component */
+            /* add the HTML from the static folder into this component, change class to className and use a element wrapper */
             <h1>{this.message}</h1>
         )
     }
