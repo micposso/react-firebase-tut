@@ -1,0 +1,48 @@
+body {
+    background: url('../img/sky.jpg') no-repeat top center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.app-nav {
+    height: auto;
+    width: 100%;
+    text-align: center;
+    background-color: #3366cc;
+    padding: 10px 0;
+    box-shadow: 12px 2px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.app-headline {
+    font: italic small-caps normal 20px/150% 'Oleo Script', Helvetica, sans-serif;    
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.app-items-container {
+    margin: 5% auto 0;
+    width: 70%;
+}
+
+.app-item-content {
+    background-color: #ccc;
+    padding: 10px;
+    border: 1px #999 solid;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.app-item-text, .app-item-close {
+    color: #999;
+    font: normal 17px/150% Helvetica, sans-serif;        
+}
+
+.app-item-close {
+    transform: rotate(45deg);
+    font-weight: bold;    
+}
+
+
+
+
