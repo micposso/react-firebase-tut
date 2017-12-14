@@ -1,0 +1,17 @@
+.app-item-content {
+    background-color: #ccc;
+    padding: 10px;
+    border: 1px #999 solid;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.app-item-text, .app-item-close {
+    color: #999;
+    font: normal 17px/150% Helvetica, sans-serif;        
+}
+
+.app-item-close {
+    transform: rotate(45deg);
+    font-weight: bold;    
+}

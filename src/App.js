@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import Note from './Note/Note';
+import Note from './Note';
+import Naigation from './Navigation';
 import './App.css';
 
 class App extends Component {
   constructor(props){
     super(props);
-    //set react state of component
-    this.state = {
-      notes: [
-        {noteContent: "This is note 1", id: 1, textColor: "color: #fff;"},
-        {noteContent: "This is note 2", id: 2, textColor: "color: #fff;"}
-      ],
-    }
   }
 
 
@@ -21,14 +15,17 @@ class App extends Component {
 
     }
     return (
-      <div className="App">
-      {
-        this.state.notes.map((note) => {
-          return (
-            <Note noteContent={note.noteContent} NoteId={note.id} key={note.id} textColor={note.textColor} />            
-          )
-        })
-      }
+      <div className="container">
+        <Navigation />
+          <div className="App">
+          {
+            this.state.notes.map((note) => {
+              return (
+                <Note noteContent={note.noteContent} NoteId={note.id} key={note.id} textColor={note.textColor} />            
+              )
+            })
+          }
+          </div>
       </div>
     );
   }

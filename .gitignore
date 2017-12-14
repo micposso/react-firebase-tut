@@ -16,6 +16,9 @@
 .env.test.local
 .env.production.local
 
+#creative folder
+/design
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
