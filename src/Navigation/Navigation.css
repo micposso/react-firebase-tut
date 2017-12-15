@@ -1,0 +1,14 @@
+.app-nav {
+    height: auto;
+    width: 100%;
+    text-align: center;
+    background-color: #3366cc;
+    padding: 10px 0;
+    box-shadow: 12px 2px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.app-headline {
+    font: italic small-caps normal 20px/150% 'Oleo Script', Helvetica, sans-serif;    
+    color: #fff;
+    letter-spacing: 2px;
+}
