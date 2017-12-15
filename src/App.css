@@ -1,5 +1,5 @@
 body {
-  background: url('../img/sky.jpg') no-repeat top center;
+  background: url('./assets/sky.jpg') no-repeat top center;
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -7,4 +7,9 @@ body {
 
 .container {
   width: 100%;
+}
+
+.app-items-container {
+  margin: 5% auto 0;
+  width: 70%;
 }

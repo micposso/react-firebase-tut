@@ -10,8 +10,8 @@ class Navigation extends Component {
 
     render(props){
         return (
-            <header class="app-nav">
-                <div class="app-headline">
+            <header className="app-nav">
+                <div className="app-headline">
                     <h1>React Firebase App</h1>
                 </div>
             </header>
