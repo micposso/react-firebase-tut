@@ -2,25 +2,46 @@ import React, { Component } from 'react';
 import Note from './Note';
 import Navigation from './Navigation';
 import Form from './Form';
+import { DB_CONFIG } from './Config';
+import firebase from 'firebase/app';
+import 'firebase/database'
 import './App.css';
 
 class App extends Component {
+  // constructor get called first the component get mounted
+
   constructor(props){
     super(props);
-    this.addNote = this.addNote.bind(this);    
+    this.addNote = this.addNote.bind(this);
+    // connect to firebase 
+    this.app = firebase.initializeApp(DB_CONFIG);
+    this.db = this.app.database().ref().child('notes');
     this.state = {
       notes: []
     }
   }
 
-  addNote(note) {
+  // add life cycle method here
+  componentDidMount(){
     // push new note to the notes array
     const previousNotes = this.state.notes;
-    previousNotes.push({id: previousNotes.length + 1, noteContent: note });
-    this.setState({
-      notes: previousNotes,
+    // use firebase to set state
+    // snap is an object that firebases uses as a representation of the DB 
+    this.db.on('child_added', snap => {
+      previousNotes.push({
+        id: snap.key,
+        noteContent: snap.val().noteContent,
+      })
+      this.setState({
+        note: previousNotes
+      })
     })
-    //now you need to pass it as a prop to the component
+  }
+
+  addNote(note) {
+    this.db.push().set({
+      noteContent: note
+    });
   }
 
   render(props) {
