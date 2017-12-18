@@ -11,15 +11,18 @@ class Form extends Component {
         this.writeNote = this.writeNote.bind(this);
     }
 
+    // when the user input changes, set the value of the noteNewContent
+    // to the value of what's in the input box.
     handleUserInput(e) {
         this.setState({
             noteNewContent: e.target.value,
         })
     }
 
-    writeNote(e){
+    // pass the value of the input box to the state noteNewContent
+    writeNote(){
         this.props.addNote(this.state.noteNewContent)
-        //clean content of note on click
+        // clean content of note on click
         this.setState({
             noteNewContent: '',
         })
