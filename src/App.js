@@ -35,6 +35,18 @@ class App extends Component {
       this.setState({
         note: previousNotes
       })
+
+      this.database.on('child_removed', snap => {
+        for(var i =0; i < previousNotes.length; i++) {
+          if(previousNotes[i].id === snap.key) {
+            previousNotes.splice(i, 1);
+          }
+        }
+        this.setState({
+          note: previousNotes
+        })
+      })
+
     })
   }
 
@@ -42,6 +54,10 @@ class App extends Component {
     this.db.push().set({
       noteContent: note
     });
+  }
+
+  removeNote(noteID){
+    this.database.child(noteId).remove();
   }
 
   render(props) {
@@ -52,7 +68,10 @@ class App extends Component {
             {
               this.state.notes.map((note) => {
                 return(
-                  <Note noteContent={note.noteContent} noteID={note.id} key={note.id} />                 
+                  <Note noteContent={note.noteContent} 
+                  noteID={note.id} 
+                  key={note.id} 
+                  removeNote={this.removeNote } />                 
                 )
               })
             }

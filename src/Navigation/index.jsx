@@ -4,9 +4,6 @@ import './Navigation.css';
 
 
 class Navigation extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render(props){
         return (
