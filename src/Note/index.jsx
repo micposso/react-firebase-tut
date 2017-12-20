@@ -6,7 +6,7 @@ class Note extends Component {
         super(props);
         this.noteContent = props.noteContent;
         this.noteId = props.noteId;
-        this.handleRemoveNote = this.handleRemoveNote.bind(this)
+        this.handleRemoveNote = this.handleRemoveNote.bind(this);
     }
 
     handleRemoveNote(id){
@@ -17,7 +17,8 @@ class Note extends Component {
         return (
             <div className="app-item-content">
                 <div className="app-item-text">{this.props.noteContent}</div>
-                <div className="app-item-close" onClick={() => this.handleRemoveNote(this.noteId)}>+</div>
+                <div className="app-item-close" 
+                onClick={() => this.handleRemoveNote(this.noteId)}>+</div>
             </div>
         )
     }

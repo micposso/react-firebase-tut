@@ -3,9 +3,7 @@ import './Navigation.css';
 
 
 
-class Navigation extends Component {
-
-    render(props){
+function Navigation() {
         return (
             <header className="app-nav">
                 <div className="app-headline">
@@ -13,7 +11,6 @@ class Navigation extends Component {
                 </div>
             </header>
         )
-    }
 }
 
 

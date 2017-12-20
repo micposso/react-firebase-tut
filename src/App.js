@@ -13,54 +13,53 @@ class App extends Component {
   constructor(props){
     super(props);
     this.addNote = this.addNote.bind(this);
+    this.removeNote = this.removeNote.bind(this);
     // connect to firebase 
     this.app = firebase.initializeApp(DB_CONFIG);
-    this.db = this.app.database().ref().child('notes');
+    this.database = this.app.database().ref().child('notes');
     this.state = {
       notes: []
     }
   }
 
-  // add life cycle method here
-  componentDidMount(){
-    // push new note to the notes array
+  componentWillMount(){
     const previousNotes = this.state.notes;
-    // use firebase to set state
-    // snap is an object that firebases uses as a representation of the DB 
-    this.db.on('child_added', snap => {
+
+    // DataSnapshot
+    this.database.on('child_added', snap => {
       previousNotes.push({
         id: snap.key,
         noteContent: snap.val().noteContent,
       })
+
       this.setState({
-        note: previousNotes
+        notes: previousNotes
       })
+    })
 
-      this.database.on('child_removed', snap => {
-        for(var i =0; i < previousNotes.length; i++) {
-          if(previousNotes[i].id === snap.key) {
-            previousNotes.splice(i, 1);
-          }
+    this.database.on('child_removed', snap => {
+      for(var i=0; i < previousNotes.length; i++){
+        if(previousNotes[i].id === snap.key){
+          previousNotes.splice(i, 1);
         }
-        this.setState({
-          note: previousNotes
-        })
-      })
+      }
 
+      this.setState({
+        notes: previousNotes
+      })
     })
   }
 
-  addNote(note) {
-    this.db.push().set({
-      noteContent: note
-    });
+  addNote(note){
+    this.database.push().set({ noteContent: note});
   }
 
-  removeNote(noteID){
+  removeNote(noteId){
+    //console.log("from the parent: " + noteId);
     this.database.child(noteId).remove();
   }
 
-  render(props) {
+  render() {
     return (
       <div className="container">
         <Navigation />
@@ -69,9 +68,9 @@ class App extends Component {
               this.state.notes.map((note) => {
                 return(
                   <Note noteContent={note.noteContent} 
-                  noteID={note.id} 
+                  noteId={note.id} 
                   key={note.id} 
-                  removeNote={this.removeNote } />                 
+                  removeNote={this.removeNote} />                 
                 )
               })
             }
