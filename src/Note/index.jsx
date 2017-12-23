@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import './Note.css';
 
 class Note extends Component {
@@ -15,11 +16,18 @@ class Note extends Component {
 
     render(props){
         return (
+            <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}>
             <div className="app-item-content">
                 <div className="app-item-text">{this.props.noteContent}</div>
                 <div className="app-item-close" 
                 onClick={() => this.handleRemoveNote(this.noteId)}>+</div>
             </div>
+            </ReactCSSTransitionGroup>
         )
     }
 }
