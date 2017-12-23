@@ -8,6 +8,7 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "react-addons": "^0.9.1-deprecated",
     "react-scripts": "1.0.17"
   },
   "scripts": {
