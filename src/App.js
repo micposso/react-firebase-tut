@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Note from './Note';
 import Navigation from './Navigation';
 import Form from './Form';
+import { Transition } from 'react-transition-group'
 import { DB_CONFIG } from './Config';
 import firebase from 'firebase/app';
 import 'firebase/database'
@@ -67,11 +68,13 @@ class App extends Component {
             {
               this.state.notes.map((note) => {
                 return(
-                  <Note noteContent={note.noteContent} 
-                  noteId={note.id} 
-                  key={note.id} 
-                  removeNote={this.removeNote} />                 
-                )
+                  <Transition>
+                    <Note noteContent={note.noteContent} 
+                    noteId={note.id} 
+                    key={note.id} 
+                    removeNote={this.removeNote} />
+                  </Transition>
+                  )
               })
             }
 
