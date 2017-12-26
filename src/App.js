@@ -2,11 +2,23 @@ import React, { Component } from 'react';
 import Note from './Note';
 import Navigation from './Navigation';
 import Form from './Form';
-import { Transition } from 'react-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import { DB_CONFIG } from './Config';
 import firebase from 'firebase/app';
 import 'firebase/database'
 import './App.css';
+
+const duration = 300;
+
+const defaultStyle = {
+  transition: `opacity ${duration}ms ease-in-out`,
+  opacity: 0,
+}
+
+const transitionStyles = {
+  entering: { opacity: 0 },
+  entered:  { opacity: 1 },
+};
 
 class App extends Component {
   // constructor get called first the component get mounted
@@ -61,24 +73,30 @@ class App extends Component {
   }
 
   render() {
+
+    const transitionOptions = {
+      transitionName: 'fade',
+      transitionEnterTimeout: 500,
+      transitionLeaveTimeout: 500
+    };
+
     return (
       <div className="container">
         <Navigation />
-          <div className="app-items-container">
-            {
-              this.state.notes.map((note) => {
-                return(
-                  <Transition>
-                    <Note noteContent={note.noteContent} 
-                    noteId={note.id} 
-                    key={note.id} 
-                    removeNote={this.removeNote} />
-                  </Transition>
-                  )
-              })
-            }
-
-          </div>
+        <ReactCSSTransitionGroup {...transitionOptions}>
+            <div className="app-items-container">
+                {
+                this.state.notes.map((note) => {
+                    return(
+                        <Note noteContent={note.noteContent} 
+                        noteId={note.id} 
+                        key={note.id} 
+                        removeNote={this.removeNote} />
+                        )
+                    })
+                }
+            </div>
+        </ReactCSSTransitionGroup>
         <Form addNote={this.addNote} />
       </div>
     );
