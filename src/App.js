@@ -8,18 +8,6 @@ import firebase from 'firebase/app';
 import 'firebase/database'
 import './App.css';
 
-const duration = 300;
-
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0,
-}
-
-const transitionStyles = {
-  entering: { opacity: 0 },
-  entered:  { opacity: 1 },
-};
-
 class App extends Component {
   // constructor get called first the component get mounted
 
@@ -83,20 +71,20 @@ class App extends Component {
     return (
       <div className="container">
         <Navigation />
-        <ReactCSSTransitionGroup {...transitionOptions}>
             <div className="app-items-container">
                 {
                 this.state.notes.map((note) => {
                     return(
-                        <Note noteContent={note.noteContent} 
-                        noteId={note.id} 
-                        key={note.id} 
-                        removeNote={this.removeNote} />
+                        <ReactCSSTransitionGroup {...transitionOptions}>
+                            <Note noteContent={note.noteContent} 
+                            noteId={note.id} 
+                            key={note.id} 
+                            removeNote={this.removeNote} />
+                        </ReactCSSTransitionGroup>
                         )
                     })
                 }
             </div>
-        </ReactCSSTransitionGroup>
         <Form addNote={this.addNote} />
       </div>
     );
