@@ -62,12 +62,6 @@ class App extends Component {
 
   render() {
 
-    const transitionOptions = {
-      transitionName: 'fade',
-      transitionEnterTimeout: 500,
-      transitionLeaveTimeout: 500
-    };
-
     return (
       <div className="container">
         <Navigation />
@@ -75,12 +69,10 @@ class App extends Component {
                 {
                 this.state.notes.map((note) => {
                     return(
-                        <ReactCSSTransitionGroup {...transitionOptions}>
                             <Note noteContent={note.noteContent} 
                             noteId={note.id} 
                             key={note.id} 
                             removeNote={this.removeNote} />
-                        </ReactCSSTransitionGroup>
                         )
                     })
                 }
