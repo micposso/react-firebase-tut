@@ -16,7 +16,7 @@ body {
 
 /* transition animations */
 
-.fade-enter {
+.fade {
   right: 100px;
 
 }
